@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Cadastro de Portfólio Virtual - Vozes do Ipiranga">
+    <meta name="author" content="Vozes do Ipiranga">
+    <title>Cadastro de Portfólio Virtual - Vozes do Ipiranga</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-first-portfolio-style.css" rel="stylesheet">
+    <link href="css/portfolio-cadastro.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a href="index.html" class="navbar-brand mx-auto mx-lg-0">Vozes do Ipiranga</a>
+            <div class="d-flex align-items-center">
+                <a href="index.html" class="btn btn-outline-light btn-sm">
+                    <i class="bi bi-arrow-left me-2"></i>Voltar ao Site
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="portfolio-signup-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="portfolio-form-container">
+                            <div class="portfolio-form-header mb-5 text-center">
+                                <h2 class="portfolio-title">Cadastro de Portfólio Virtual</h2>
+                                <p class="portfolio-subtitle">Crie seu portfólio e destaque seu negócio na região do Ipiranga</p>
+                            </div>
+
+                            <form class="custom-form portfolio-form" role="form" action="#" method="post" enctype="multipart/form-data">
+
+                                <!-- Informações Básicas -->
+                                <div class="form-section mb-5">
+                                    <h4 class="section-title">
+                                        <i class="bi bi-info-circle me-2"></i>
+                                        Informações Básicas
+                                    </h4>
+
+                                    <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                            <div class="form-floating">
+                                                <input type="text" name="businessName" id="businessName" class="form-control"
+                                                    placeholder="Nome do seu negócio" required>
+                                                <label for="businessName" class="required-field">Nome do Negócio</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-floating">
+                                                <select name="businessSegment" id="businessSegment" class="form-select" required>
+                                                    <option value="">Selecione o segmento...</option>
+                                                    <option value="alimentacao">Alimentação</option>
+                                                    <option value="beleza">Beleza e Estética</option>
+                                                    <option value="saude">Saúde</option>
+                                                    <option value="educacao">Educação</option>
+                                                    <option value="tecnologia">Tecnologia</option>
+                                                    <option value="servicos">Serviços Gerais</option>
+                                                    <option value="comercio">Comércio</option>
+                                                    <option value="consultoria">Consultoria</option>
+                                                    <option value="grafica">Gráfica</option>
+                                                    <option value="construcao">Construção</option>
+                                                    <option value="transporte">Transporte</option>
+                                                    <option value="eventos">Eventos</option>
+                                                    <option value="outros">Outros</option>
+                                                </select>
+                                                <label for="businessSegment" class="required-field">Segmento do Negócio</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-floating">
+                                                <input type="text" name="ownerName" id="ownerName" class="form-control"
+                                                    placeholder="Nome do proprietário" required>
+                                                <label for="ownerName" class="required-field">Nome do Proprietário</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 mb-3">
+                                            <div class="form-floating">
+                                                <textarea name="businessDescription" id="businessDescription" class="form-control description-textarea"
+                                                    placeholder="Descreva seu negócio..." required></textarea>
+                                                <label for="businessDescription" class="required-field">Descrição do Negócio</label>
+                                            </div>
+                                            <div class="form-text">Máximo 500 caracteres</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Upload de Imagens -->
+                                <div class="form-section mb-5">
+                                    <h4 class="section-title">
+                                        <i class="bi bi-images me-2"></i>
+                                        Galeria de Imagens
+                                    </h4>
+
+                                    <div class="image-upload-section">
+                                        <div class="upload-info mb-3">
+                                            <p class="mb-1">Faça upload de até 10 imagens do seu negócio</p>
+                                            <small class="text-muted">Formatos aceitos: JPG, PNG, GIF (máximo 5MB por imagem)</small>
+                                        </div>
+
+                                        <div class="image-upload-container">
+                                            <input type="file" name="businessImages[]" id="businessImages" class="d-none"
+                                                multiple accept="image/*" max="10">
+                                            <label for="businessImages" class="image-upload-btn">
+                                                <i class="bi bi-cloud-upload display-4 mb-3"></i>
+                                                <h5>Clique aqui para selecionar imagens</h5>
+                                                <p class="mb-0">ou arraste e solte as imagens aqui</p>
+                                            </label>
+                                        </div>
+
+                                        <div class="image-preview-grid" id="imagePreviewGrid"></div>
+                                        <div class="upload-counter">
+                                            <span id="imageCount">0</span>/10 imagens selecionadas
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Redes Sociais -->
+                                <div class="form-section mb-5">
+                                    <h4 class="section-title">
+                                        <i class="bi bi-share me-2"></i>
+                                        Redes Sociais e Links
+                                    </h4>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-floating">
+                                                <input type="url" name="website" id="website" class="form-control"
+                                                    placeholder="https://seusite.com.br">
+                                                <label for="website">Site</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-floating">
+                                                <input type="url" name="instagram" id="instagram" class="form-control"
+                                                    placeholder="https://instagram.com/seuusuario">
+                                                <label for="instagram">Instagram</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-floating">
+                                                <input type="url" name="facebook" id="facebook" class="form-control"
+                                                    placeholder="https://facebook.com/suapagina">
+                                                <label for="facebook">Facebook</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-floating">
+                                                <input type="url" name="whatsapp" id="whatsapp" class="form-control"
+                                                    placeholder="https://wa.me/5511999999999">
+                                                <label for="whatsapp">WhatsApp Business</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-floating">
+                                                <input type="url" name="linkedin" id="linkedin" class="form-control"
+                                                    placeholder="https://linkedin.com/company/suaempresa">
+                                                <label for="linkedin">LinkedIn</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-floating">
+                                                <input type="url" name="youtube" id="youtube" class="form-control"
+                                                    placeholder="https://youtube.com/seucanal">
+                                                <label for="youtube">YouTube</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Endereço e Contato -->
+                                <div class="form-section mb-5">
+                                    <h4 class="section-title">
+                                        <i class="bi bi-geo-alt me-2"></i>
+                                        Endereço e Contato
+                                    </h4>
+
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <div class="form-floating">
+                                                <input type="text" name="cep" id="cep" class="form-control"
+                                                    placeholder="00000-000" required>
+                                                <label for="cep" class="required-field">CEP</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8 mb-3">
+                                            <div class="form-floating">
+                                                <input type="text" name="address" id="address" class="form-control"
+                                                    placeholder="Rua, Avenida..." required>
+                                                <label for="address" class="required-field">Endereço</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 mb-3">
+                                            <div class="form-floating">
+                                                <input type="text" name="number" id="number" class="form-control"
+                                                    placeholder="123" required>
+                                                <label for="number" class="required-field">Número</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-9 mb-3">
+                                            <div class="form-floating">
+                                                <input type="text" name="complement" id="complement" class="form-control"
+                                                    placeholder="Apartamento, bloco, sala...">
+                                                <label for="complement">Complemento</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-floating">
+                                                <input type="text" name="neighborhood" id="neighborhood" class="form-control"
+                                                    placeholder="Bairro" required>
+                                                <label for="neighborhood" class="required-field">Bairro</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-floating">
+                                                <input type="text" name="city" id="city" class="form-control"
+                                                    placeholder="Cidade" required>
+                                                <label for="city" class="required-field">Cidade</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-floating">
+                                                <input type="email" name="email" id="email" class="form-control"
+                                                    placeholder="contato@seunegocio.com" required>
+                                                <label for="email" class="required-field">E-mail de Contato</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-floating">
+                                                <input type="tel" name="phone" id="phone" class="form-control"
+                                                    placeholder="(11) 99999-9999" required>
+                                                <label for="phone" class="required-field">Telefone</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Submissão -->
+                                <div class="form-section mb-4">
+                                </div>
+
+                                <div class="form-actions text-center">
+                                    <button type="submit" class="btn custom-btn btn-lg portfolio-submit-btn">
+                                        <i class="bi bi-check-circle me-2"></i>
+                                        Criar Portfólio Virtual
+                                    </button>
+
+                                    <div class="mt-3">
+                                        <a href="index.html" class="btn btn-outline-secondary">
+                                            <i class="bi bi-arrow-left me-2"></i>
+                                            Cancelar
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="copyright-text-wrap">
+                        <p class="mb-0">
+                            <span class="copyright-text">Copyright © 2025 <a href="#">Vozes do Ipiranga</a>. Todos os
+                                direitos reservados.</span>
+                            Design: <a rel="sponsored" href="www.pazzne.com" target="_blank">www.pazzne.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/portfolio-cadastro.js"></script>
+</body>
+
+</html>

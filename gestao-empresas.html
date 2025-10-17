@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gestão de Empresas - Vozes do Ipiranga">
+    <meta name="author" content="Vozes do Ipiranga">
+    <title>Gestão de Empresas - Vozes do Ipiranga</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/templatemo-first-portfolio-style.css" rel="stylesheet">
+
+    <style>
+        .management-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a4a3a 0%, #2d7a5f 100%);
+            padding: 2rem 0;
+        }
+
+        .management-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-header {
+            border-bottom: 3px solid #1a4a3a;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h2 {
+            color: #1a4a3a;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: #666;
+            margin: 0;
+        }
+
+        .filters-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-group {
+            margin-bottom: 1rem;
+        }
+
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #1a4a3a;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1a4a3a 0%, #2d7a5f 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            margin: 0;
+            font-weight: 700;
+            color: #ffc107;
+        }
+
+        .stat-card p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.9;
+            color: #ffc107;
+        }
+
+        .companies-table {
+            width: 100%;
+            margin-top: 1rem;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .companies-table thead {
+            background: #1a4a3a;
+            color: white;
+        }
+
+        .companies-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border: none;
+        }
+
+        .companies-table th:first-child {
+            border-radius: 10px 0 0 0;
+        }
+
+        .companies-table th:last-child {
+            border-radius: 0 10px 0 0;
+        }
+
+        .companies-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .companies-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .status-badge {
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-blocked {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .action-btn {
+            padding: 0.375rem 0.75rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .companies-table td:last-child {
+            white-space: nowrap;
+        }
+
+        .btn-view {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .btn-view:hover {
+            background: #138496;
+        }
+
+        .btn-edit {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn-edit:hover {
+            background: #e0a800;
+        }
+
+        .btn-block {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-block:hover {
+            background: #c82333;
+        }
+
+        .btn-unblock {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-unblock:hover {
+            background: #218838;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .pagination button {
+            padding: 0.5rem 1rem;
+            border: 1px solid #1a4a3a;
+            background: white;
+            color: #1a4a3a;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            background: #1a4a3a;
+            color: white;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination button.active {
+            background: #1a4a3a;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .companies-table {
+                font-size: 0.875rem;
+            }
+
+            .companies-table th,
+            .companies-table td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            .action-btn {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="management-section">
+            <div class="container">
+                <div class="management-container">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <h2><i class="bi bi-building"></i> Gestão de Empresas</h2>
+                        <p>Gerencie todas as empresas cadastradas na plataforma</p>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <h3 id="totalCompanies">0</h3>
+                            <p>Total de Empresas</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="activeCompanies">0</h3>
+                            <p>Empresas Ativas</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="blockedCompanies">0</h3>
+                            <p>Empresas Bloqueadas</p>
+                        </div>
+                    </div>
+
+                    <!-- Filters Section -->
+                    <div class="filters-section">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="filter-group">
+                                    <label for="searchFilter">
+                                        <i class="bi bi-search"></i> Buscar
+                                    </label>
+                                    <input type="text" id="searchFilter" class="form-control"
+                                           placeholder="Nome da empresa, região...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="filter-group">
+                                    <label for="regionFilter">
+                                        <i class="bi bi-geo-alt"></i> Região
+                                    </label>
+                                    <select id="regionFilter" class="form-select">
+                                        <option value="">Todas as regiões</option>
+                                        <option value="heliopolis">Heliópolis</option>
+                                        <option value="cursino">Av. Cursino / Alto do Ipiranga</option>
+                                        <option value="sacoma">Sacomã</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="filter-group">
+                                    <label for="categoryFilter">
+                                        <i class="bi bi-tags"></i> Categoria
+                                    </label>
+                                    <select id="categoryFilter" class="form-select">
+                                        <option value="">Todas as categorias</option>
+                                        <option value="alimentacao">Alimentação</option>
+                                        <option value="saude">Saúde</option>
+                                        <option value="educacao">Educação</option>
+                                        <option value="servicos">Serviços</option>
+                                        <option value="comercio">Comércio</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="filter-group">
+                                    <label for="statusFilter">
+                                        <i class="bi bi-shield-check"></i> Status
+                                    </label>
+                                    <select id="statusFilter" class="form-select">
+                                        <option value="">Todos</option>
+                                        <option value="active">Ativas</option>
+                                        <option value="blocked">Bloqueadas</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Companies Table -->
+                    <div class="table-responsive">
+                        <table class="companies-table">
+                            <thead>
+                                <tr>
+                                    <th>Empresa</th>
+                                    <th>Região</th>
+                                    <th>Categoria</th>
+                                    <th>Contato</th>
+                                    <th>Data Cadastro</th>
+                                    <th>Parceiro</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="companiesTableBody">
+                                <!-- Dados serão inseridos via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination" id="paginationContainer">
+                        <!-- Paginação será inserida via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/custom.js"></script>
+
+    <script>
+        // Dados mockados de exemplo
+        const mockCompanies = [
+            {
+                id: 1,
+                name: 'Bar do João',
+                region: 'heliopolis',
+                regionName: 'Heliópolis',
+                category: 'alimentacao',
+                categoryName: 'Alimentação',
+                contact: '(11) 98765-4321',
+                email: 'contato@bardojoao.com.br',
+                registerDate: '2025-01-15',
+                status: 'active',
+                isPartner: true
+            },
+            {
+                id: 2,
+                name: 'Farmácia Saúde Total',
+                region: 'cursino',
+                regionName: 'Av. Cursino',
+                category: 'saude',
+                categoryName: 'Saúde',
+                contact: '(11) 97654-3210',
+                email: 'contato@farmaciasaudetotal.com.br',
+                registerDate: '2025-02-20',
+                status: 'active',
+                isPartner: false
+            },
+            {
+                id: 3,
+                name: 'Escola de Idiomas Global',
+                region: 'sacoma',
+                regionName: 'Sacomã',
+                category: 'educacao',
+                categoryName: 'Educação',
+                contact: '(11) 96543-2109',
+                email: 'contato@escolaglobal.com.br',
+                registerDate: '2025-03-10',
+                status: 'blocked',
+                isPartner: true
+            },
+            {
+                id: 4,
+                name: 'Pizzaria Bella Itália',
+                region: 'heliopolis',
+                regionName: 'Heliópolis',
+                category: 'alimentacao',
+                categoryName: 'Alimentação',
+                contact: '(11) 95432-1098',
+                email: 'contato@bellaitalia.com.br',
+                registerDate: '2025-01-25',
+                status: 'active',
+                isPartner: true
+            },
+            {
+                id: 5,
+                name: 'Academia Corpo em Forma',
+                region: 'cursino',
+                regionName: 'Av. Cursino',
+                category: 'saude',
+                categoryName: 'Saúde',
+                contact: '(11) 94321-0987',
+                email: 'contato@corpoemforma.com.br',
+                registerDate: '2025-02-05',
+                status: 'active',
+                isPartner: false
+            },
+            {
+                id: 6,
+                name: 'Mercadinho São Paulo',
+                region: 'sacoma',
+                regionName: 'Sacomã',
+                category: 'comercio',
+                categoryName: 'Comércio',
+                contact: '(11) 93210-9876',
+                email: 'contato@mercadinhosaopaulo.com.br',
+                registerDate: '2025-03-01',
+                status: 'blocked',
+                isPartner: false
+            }
+        ];
+
+        let currentPage = 1;
+        const itemsPerPage = 5;
+        let filteredCompanies = [...mockCompanies];
+
+        function updateStats() {
+            document.getElementById('totalCompanies').textContent = mockCompanies.length;
+            document.getElementById('activeCompanies').textContent = mockCompanies.filter(c => c.status === 'active').length;
+            document.getElementById('blockedCompanies').textContent = mockCompanies.filter(c => c.status === 'blocked').length;
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchFilter').value.toLowerCase();
+            const regionFilter = document.getElementById('regionFilter').value;
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+
+            filteredCompanies = mockCompanies.filter(company => {
+                const matchSearch = company.name.toLowerCase().includes(searchTerm) ||
+                                  company.regionName.toLowerCase().includes(searchTerm);
+                const matchRegion = !regionFilter || company.region === regionFilter;
+                const matchCategory = !categoryFilter || company.category === categoryFilter;
+                const matchStatus = !statusFilter || company.status === statusFilter;
+
+                return matchSearch && matchRegion && matchCategory && matchStatus;
+            });
+
+            currentPage = 1;
+            renderTable();
+            renderPagination();
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('companiesTableBody');
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageCompanies = filteredCompanies.slice(startIndex, endIndex);
+
+            tbody.innerHTML = pageCompanies.map(company => `
+                <tr>
+                    <td><strong>${company.name}</strong></td>
+                    <td>${company.regionName}</td>
+                    <td>${company.categoryName}</td>
+                    <td>
+                        ${company.contact}<br>
+                        <small class="text-muted">${company.email}</small>
+                    </td>
+                    <td>${new Date(company.registerDate).toLocaleDateString('pt-BR')}</td>
+                    <td style="text-align: center;">
+                        <input type="checkbox" ${company.isPartner ? 'checked' : ''}
+                               onchange="togglePartner(${company.id})"
+                               style="width: 20px; height: 20px; cursor: pointer;">
+                    </td>
+                    <td>
+                        <span class="status-badge ${company.status === 'active' ? 'status-active' : 'status-blocked'}">
+                            ${company.status === 'active' ? 'Ativa' : 'Bloqueada'}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="action-btn btn-view" onclick="viewCompany(${company.id})" title="Ver">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                        <button class="action-btn btn-edit" onclick="editCompany(${company.id})" title="Editar">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        ${company.status === 'active'
+                            ? `<button class="action-btn btn-block" onclick="toggleBlock(${company.id})" title="Bloquear">
+                                <i class="bi bi-lock"></i>
+                               </button>`
+                            : `<button class="action-btn btn-unblock" onclick="toggleBlock(${company.id})" title="Desbloquear">
+                                <i class="bi bi-unlock"></i>
+                               </button>`
+                        }
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredCompanies.length / itemsPerPage);
+            const container = document.getElementById('paginationContainer');
+
+            let html = `
+                <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+            `;
+
+            for (let i = 1; i <= totalPages; i++) {
+                html += `
+                    <button onclick="changePage(${i})" class="${i === currentPage ? 'active' : ''}">
+                        ${i}
+                    </button>
+                `;
+            }
+
+            html += `
+                <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function changePage(page) {
+            const totalPages = Math.ceil(filteredCompanies.length / itemsPerPage);
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                renderTable();
+                renderPagination();
+            }
+        }
+
+        function viewCompany(id) {
+            const company = mockCompanies.find(c => c.id === id);
+            alert(`Visualizar empresa: ${company.name}\n\nEsta funcionalidade abrirá uma modal com os detalhes completos da empresa.`);
+        }
+
+        function editCompany(id) {
+            const company = mockCompanies.find(c => c.id === id);
+            alert(`Editar empresa: ${company.name}\n\nEsta funcionalidade redirecionará para a página de edição da empresa.`);
+        }
+
+        function toggleBlock(id) {
+            const company = mockCompanies.find(c => c.id === id);
+            const action = company.status === 'active' ? 'bloquear' : 'desbloquear';
+
+            if (confirm(`Deseja realmente ${action} a empresa "${company.name}"?`)) {
+                company.status = company.status === 'active' ? 'blocked' : 'active';
+                updateStats();
+                applyFilters();
+                alert(`Empresa ${company.status === 'active' ? 'desbloqueada' : 'bloqueada'} com sucesso!`);
+            }
+        }
+
+        function togglePartner(id) {
+            const company = mockCompanies.find(c => c.id === id);
+            company.isPartner = !company.isPartner;
+            renderTable();
+            alert(`Empresa "${company.name}" ${company.isPartner ? 'adicionada como' : 'removida de'} parceiro!`);
+        }
+
+        // Event Listeners
+        document.getElementById('searchFilter').addEventListener('input', applyFilters);
+        document.getElementById('regionFilter').addEventListener('change', applyFilters);
+        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        document.getElementById('statusFilter').addEventListener('change', applyFilters);
+
+        // Inicialização
+        updateStats();
+        renderTable();
+        renderPagination();
+    </script>
+</body>
+
+</html>

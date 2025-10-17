@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gestão de Eventos - Vozes do Ipiranga">
+    <meta name="author" content="Vozes do Ipiranga">
+    <title>Gestão de Eventos - Vozes do Ipiranga</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/templatemo-first-portfolio-style.css" rel="stylesheet">
+
+    <style>
+        .management-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a4a3a 0%, #2d7a5f 100%);
+            padding: 2rem 0;
+        }
+
+        .management-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-header {
+            border-bottom: 3px solid #1a4a3a;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h2 {
+            color: #1a4a3a;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: #666;
+            margin: 0;
+        }
+
+        .filters-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-group {
+            margin-bottom: 1rem;
+        }
+
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #1a4a3a;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1a4a3a 0%, #2d7a5f 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            margin: 0;
+            font-weight: 700;
+            color: #ffc107;
+        }
+
+        .stat-card p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.9;
+            color: #ffc107;
+        }
+
+        .events-table {
+            width: 100%;
+            margin-top: 1rem;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .events-table thead {
+            background: #1a4a3a;
+            color: white;
+        }
+
+        .events-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border: none;
+        }
+
+        .events-table th:first-child {
+            border-radius: 10px 0 0 0;
+        }
+
+        .events-table th:last-child {
+            border-radius: 0 10px 0 0;
+        }
+
+        .events-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .events-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .status-badge {
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-blocked {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .type-badge {
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .type-free {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .type-paid {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .action-btn {
+            padding: 0.375rem 0.75rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .events-table td:last-child {
+            white-space: nowrap;
+        }
+
+        .btn-view {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .btn-view:hover {
+            background: #138496;
+        }
+
+        .btn-edit {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn-edit:hover {
+            background: #e0a800;
+        }
+
+        .btn-block {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-block:hover {
+            background: #c82333;
+        }
+
+        .btn-unblock {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-unblock:hover {
+            background: #218838;
+        }
+
+        .btn-approve {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-approve:hover {
+            background: #218838;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .pagination button {
+            padding: 0.5rem 1rem;
+            border: 1px solid #1a4a3a;
+            background: white;
+            color: #1a4a3a;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            background: #1a4a3a;
+            color: white;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination button.active {
+            background: #1a4a3a;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .events-table {
+                font-size: 0.875rem;
+            }
+
+            .events-table th,
+            .events-table td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            .action-btn {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="management-section">
+            <div class="container-fluid px-4">
+                <div class="management-container">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <h2><i class="bi bi-calendar-event"></i> Gestão de Eventos</h2>
+                        <p>Gerencie todos os eventos cadastrados na plataforma</p>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <h3 id="totalEvents">0</h3>
+                            <p>Total de Eventos</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="activeEvents">0</h3>
+                            <p>Eventos Ativos</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="pendingEvents">0</h3>
+                            <p>Aguardando Aprovação</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="blockedEvents">0</h3>
+                            <p>Eventos Bloqueados</p>
+                        </div>
+                    </div>
+
+                    <!-- Filters Section -->
+                    <div class="filters-section">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="filter-group">
+                                    <label for="searchFilter">
+                                        <i class="bi bi-search"></i> Buscar
+                                    </label>
+                                    <input type="text" id="searchFilter" class="form-control"
+                                           placeholder="Nome do evento, organizador...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="filter-group">
+                                    <label for="categoryFilter">
+                                        <i class="bi bi-tags"></i> Categoria
+                                    </label>
+                                    <select id="categoryFilter" class="form-select">
+                                        <option value="">Todas as categorias</option>
+                                        <option value="cultural">Cultural</option>
+                                        <option value="educacional">Educacional</option>
+                                        <option value="esportivo">Esportivo</option>
+                                        <option value="festa">Festa</option>
+                                        <option value="gastronômico">Gastronômico</option>
+                                        <option value="workshop">Workshop</option>
+                                        <option value="outro">Outro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="filter-group">
+                                    <label for="typeFilter">
+                                        <i class="bi bi-ticket"></i> Tipo
+                                    </label>
+                                    <select id="typeFilter" class="form-select">
+                                        <option value="">Todos</option>
+                                        <option value="gratuito">Gratuito</option>
+                                        <option value="pago">Pago</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="filter-group">
+                                    <label for="statusFilter">
+                                        <i class="bi bi-shield-check"></i> Status
+                                    </label>
+                                    <select id="statusFilter" class="form-select">
+                                        <option value="">Todos</option>
+                                        <option value="active">Ativos</option>
+                                        <option value="pending">Pendentes</option>
+                                        <option value="blocked">Bloqueados</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Events Table -->
+                    <div class="table-responsive">
+                        <table class="events-table">
+                            <thead>
+                                <tr>
+                                    <th>Evento</th>
+                                    <th>Categoria</th>
+                                    <th>Tipo</th>
+                                    <th>Data</th>
+                                    <th>Organizador</th>
+                                    <th>Destaque</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="eventsTableBody">
+                                <!-- Dados serão inseridos via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination" id="paginationContainer">
+                        <!-- Paginação será inserida via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/custom.js"></script>
+
+    <script>
+        // Dados mockados de exemplo
+        const mockEvents = [
+            {
+                id: 1,
+                name: 'Festa Italiana do Ipiranga',
+                category: 'gastronômico',
+                categoryName: 'Gastronômico',
+                type: 'gratuito',
+                eventDate: '2025-10-15',
+                organizer: 'Associação Cultural Italiana',
+                organizerEmail: 'contato@culturaitaliana.com.br',
+                status: 'active',
+                isFeatured: true
+            },
+            {
+                id: 2,
+                name: 'Workshop de Marketing Digital',
+                category: 'workshop',
+                categoryName: 'Workshop',
+                type: 'pago',
+                eventDate: '2025-10-20',
+                organizer: 'Instituto de Tecnologia',
+                organizerEmail: 'contato@institutotech.com.br',
+                status: 'active',
+                isFeatured: false
+            },
+            {
+                id: 3,
+                name: 'Corrida Solidária',
+                category: 'esportivo',
+                categoryName: 'Esportivo',
+                type: 'pago',
+                eventDate: '2025-11-05',
+                organizer: 'Esporte Clube Ipiranga',
+                organizerEmail: 'contato@ecipiranga.com.br',
+                status: 'pending',
+                isFeatured: false
+            },
+            {
+                id: 4,
+                name: 'Festival de Música Indie',
+                category: 'cultural',
+                categoryName: 'Cultural',
+                type: 'pago',
+                eventDate: '2025-11-12',
+                organizer: 'Coletivo Musical',
+                organizerEmail: 'contato@coletivomusical.com.br',
+                status: 'active',
+                isFeatured: true
+            },
+            {
+                id: 5,
+                name: 'Palestra de Empreendedorismo',
+                category: 'educacional',
+                categoryName: 'Educacional',
+                type: 'gratuito',
+                eventDate: '2025-10-25',
+                organizer: 'SEBRAE',
+                organizerEmail: 'eventos@sebrae.com.br',
+                status: 'pending',
+                isFeatured: false
+            },
+            {
+                id: 6,
+                name: 'Festa Junina Comunitária',
+                category: 'festa',
+                categoryName: 'Festa',
+                type: 'gratuito',
+                eventDate: '2025-06-20',
+                organizer: 'Centro Comunitário',
+                organizerEmail: 'contato@centrocomunitario.com.br',
+                status: 'blocked',
+                isFeatured: false
+            }
+        ];
+
+        let currentPage = 1;
+        const itemsPerPage = 5;
+        let filteredEvents = [...mockEvents];
+
+        function updateStats() {
+            document.getElementById('totalEvents').textContent = mockEvents.length;
+            document.getElementById('activeEvents').textContent = mockEvents.filter(e => e.status === 'active').length;
+            document.getElementById('pendingEvents').textContent = mockEvents.filter(e => e.status === 'pending').length;
+            document.getElementById('blockedEvents').textContent = mockEvents.filter(e => e.status === 'blocked').length;
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchFilter').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+
+            filteredEvents = mockEvents.filter(event => {
+                const matchSearch = event.name.toLowerCase().includes(searchTerm) ||
+                                  event.organizer.toLowerCase().includes(searchTerm);
+                const matchCategory = !categoryFilter || event.category === categoryFilter;
+                const matchType = !typeFilter || event.type === typeFilter;
+                const matchStatus = !statusFilter || event.status === statusFilter;
+
+                return matchSearch && matchCategory && matchType && matchStatus;
+            });
+
+            currentPage = 1;
+            renderTable();
+            renderPagination();
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('eventsTableBody');
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageEvents = filteredEvents.slice(startIndex, endIndex);
+
+            tbody.innerHTML = pageEvents.map(event => `
+                <tr>
+                    <td><strong>${event.name}</strong></td>
+                    <td>${event.categoryName}</td>
+                    <td>
+                        <span class="type-badge ${event.type === 'gratuito' ? 'type-free' : 'type-paid'}">
+                            ${event.type === 'gratuito' ? 'Gratuito' : 'Pago'}
+                        </span>
+                    </td>
+                    <td>${new Date(event.eventDate).toLocaleDateString('pt-BR')}</td>
+                    <td>
+                        ${event.organizer}<br>
+                        <small class="text-muted">${event.organizerEmail}</small>
+                    </td>
+                    <td style="text-align: center;">
+                        <input type="checkbox" ${event.isFeatured ? 'checked' : ''}
+                               onchange="toggleFeatured(${event.id})"
+                               style="width: 20px; height: 20px; cursor: pointer;">
+                    </td>
+                    <td>
+                        <span class="status-badge ${
+                            event.status === 'active' ? 'status-active' :
+                            event.status === 'pending' ? 'status-pending' :
+                            'status-blocked'
+                        }">
+                            ${event.status === 'active' ? 'Ativo' : event.status === 'pending' ? 'Pendente' : 'Bloqueado'}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="action-btn btn-view" onclick="viewEvent(${event.id})" title="Ver">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                        <button class="action-btn btn-edit" onclick="editEvent(${event.id})" title="Editar">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        ${event.status === 'pending'
+                            ? `<button class="action-btn btn-approve" onclick="approveEvent(${event.id})" title="Aprovar">
+                                <i class="bi bi-check-circle"></i>
+                               </button>`
+                            : ''
+                        }
+                        ${event.status === 'active'
+                            ? `<button class="action-btn btn-block" onclick="toggleBlock(${event.id})" title="Bloquear">
+                                <i class="bi bi-lock"></i>
+                               </button>`
+                            : event.status === 'blocked'
+                            ? `<button class="action-btn btn-unblock" onclick="toggleBlock(${event.id})" title="Desbloquear">
+                                <i class="bi bi-unlock"></i>
+                               </button>`
+                            : ''
+                        }
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredEvents.length / itemsPerPage);
+            const container = document.getElementById('paginationContainer');
+
+            let html = `
+                <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+            `;
+
+            for (let i = 1; i <= totalPages; i++) {
+                html += `
+                    <button onclick="changePage(${i})" class="${i === currentPage ? 'active' : ''}">
+                        ${i}
+                    </button>
+                `;
+            }
+
+            html += `
+                <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function changePage(page) {
+            const totalPages = Math.ceil(filteredEvents.length / itemsPerPage);
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                renderTable();
+                renderPagination();
+            }
+        }
+
+        function viewEvent(id) {
+            const event = mockEvents.find(e => e.id === id);
+            alert(`Visualizar evento: ${event.name}\n\nEsta funcionalidade abrirá uma modal com os detalhes completos do evento.`);
+        }
+
+        function editEvent(id) {
+            const event = mockEvents.find(e => e.id === id);
+            alert(`Editar evento: ${event.name}\n\nEsta funcionalidade redirecionará para a página de edição do evento.`);
+        }
+
+        function approveEvent(id) {
+            const event = mockEvents.find(e => e.id === id);
+            if (confirm(`Deseja aprovar o evento "${event.name}"?`)) {
+                event.status = 'active';
+                updateStats();
+                applyFilters();
+                alert(`Evento aprovado com sucesso!`);
+            }
+        }
+
+        function toggleBlock(id) {
+            const event = mockEvents.find(e => e.id === id);
+            const action = event.status === 'active' ? 'bloquear' : 'desbloquear';
+
+            if (confirm(`Deseja realmente ${action} o evento "${event.name}"?`)) {
+                event.status = event.status === 'active' ? 'blocked' : 'active';
+                updateStats();
+                applyFilters();
+                alert(`Evento ${event.status === 'active' ? 'desbloqueado' : 'bloqueado'} com sucesso!`);
+            }
+        }
+
+        function toggleFeatured(id) {
+            const event = mockEvents.find(e => e.id === id);
+            event.isFeatured = !event.isFeatured;
+            renderTable();
+            alert(`Evento "${event.name}" ${event.isFeatured ? 'adicionado como' : 'removido de'} destaque!`);
+        }
+
+        // Event Listeners
+        document.getElementById('searchFilter').addEventListener('input', applyFilters);
+        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        document.getElementById('typeFilter').addEventListener('change', applyFilters);
+        document.getElementById('statusFilter').addEventListener('change', applyFilters);
+
+        // Inicialização
+        updateStats();
+        renderTable();
+        renderPagination();
+    </script>
+</body>
+
+</html>

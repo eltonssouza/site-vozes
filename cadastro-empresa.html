@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Cadastro - Vozes do Ipiranga">
+    <meta name="author" content="Vozes do Ipiranga">
+    <title>Cadastro - Vozes do Ipiranga</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/templatemo-first-portfolio-style.css" rel="stylesheet">
+    <link href="css/cadastro.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <section class="signup-section">
+            <div class="container-fluid">
+                <div class="row min-vh-100">
+                    <!-- Left side - Brand/Logo -->
+                    <div class="col-lg-5 d-flex align-items-center justify-content-center signup-brand-side">
+                        <div class="text-center">
+                            <h2 class="brand-title">Vozes do Ipiranga</h2>
+                            <p class="brand-subtitle">Junte-se à nossa comunidade e faça parte da comunicação local</p>
+                            <div class="brand-features mt-4">
+                                <div class="feature-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Conecte-se com a comunidade</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Receba atualizações locais</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Participe de eventos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right side - Signup Form -->
+                    <div class="col-lg-7 d-flex align-items-center justify-content-center signup-form-side">
+                        <div class="signup-form-container">
+                            <div class="signup-form-header mb-4">
+                                <h3 class="signup-title">Criar nova conta</h3>
+                                <p class="signup-subtitle">Preencha os dados abaixo para se cadastrar</p>
+                            </div>
+
+                            <form class="custom-form signup-form" role="form" action="#" method="post">
+                                <!-- Tipo de pessoa -->
+                                <div class="mb-4">
+                                    <label class="form-label required-field">Tipo de cadastro</label>
+                                    <div class="person-type-toggle">
+                                        <input type="radio" class="btn-check" name="personType" id="pf" value="pf"
+                                            checked>
+                                        <label class="btn btn-outline-primary person-type-btn" for="pf">
+                                            <i class="bi bi-person"></i> Pessoa Física
+                                        </label>
+
+                                        <input type="radio" class="btn-check" name="personType" id="pj" value="pj">
+                                        <label class="btn btn-outline-primary person-type-btn" for="pj">
+                                            <i class="bi bi-building"></i> Pessoa Jurídica
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- CPF/CNPJ -->
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="document" id="document" class="form-control"
+                                        placeholder="000.000.000-00" required>
+                                    <label for="document" class="required-field" id="documentLabel">CPF</label>
+                                </div>
+
+                                <!-- Nome/Razão Social -->
+                                <div class="form-floating mb-3" id="nameField">
+                                    <input type="text" name="name" id="name" class="form-control"
+                                        placeholder="Seu nome completo" required>
+                                    <label for="name" class="required-field" id="nameLabel">Nome completo</label>
+                                </div>
+
+                                <!-- Nome Fantasia (apenas PJ) -->
+                                <div class="form-floating mb-3" id="fantasyNameField" style="display: none;">
+                                    <input type="text" name="fantasyName" id="fantasyName" class="form-control"
+                                        placeholder="Nome fantasia da empresa">
+                                    <label for="fantasyName">Nome fantasia</label>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="form-floating mb-3">
+                                    <input type="email" name="email" id="email" class="form-control"
+                                        placeholder="seu@email.com" required>
+                                    <label for="email" class="required-field">E-mail</label>
+                                </div>
+
+                                <!-- Telefone -->
+                                <div class="form-floating mb-3">
+                                    <input type="tel" name="phone" id="phone" class="form-control"
+                                        placeholder="(11) 99999-9999" required>
+                                    <label for="phone" class="required-field">Telefone</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input type="text" name="cep" id="cep" class="form-control"
+                                            placeholder="00000-000" required>
+                                        <label for="cep" class="required-field">CEP</label>
+                                    </div>
+                                </div>
+                                <!-- Endereço -->
+                                <div class="row mb-3">
+                                    <div class="col-md-8">
+                                        <div class="form-floating">
+                                            <input type="text" name="address" id="address" class="form-control"
+                                                placeholder="Rua, Avenida..." required>
+                                            <label for="address" class="required-field">Endereço</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-floating">
+                                            <input type="text" name="number" id="number" class="form-control"
+                                                placeholder="123" required>
+                                            <label for="number" class="required-field">Número</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <div class="form-floating">
+                                            <input type="text" name="complement" id="complement" class="form-control"
+                                                placeholder="Apartamento, bloco, sala...">
+                                            <label for="complement">Complemento</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" name="neighborhood" id="neighborhood"
+                                                class="form-control" placeholder="Bairro" required>
+                                            <label for="neighborhood" class="required-field">Bairro</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" name="city" id="city" class="form-control"
+                                                placeholder="Cidade" required>
+                                            <label for="city" class="required-field">Cidade</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+
+                                    <div class="col-md-8">
+                                        <div class="form-floating">
+                                            <select name="state" id="state" class="form-select" required>
+                                                <option value="">Selecione...</option>
+                                                <option value="SP">São Paulo</option>
+                                                <option value="RJ">Rio de Janeiro</option>
+                                                <option value="MG">Minas Gerais</option>
+                                                <option value="RS">Rio Grande do Sul</option>
+                                                <option value="PR">Paraná</option>
+                                                <option value="SC">Santa Catarina</option>
+                                                <option value="BA">Bahia</option>
+                                                <option value="GO">Goiás</option>
+                                                <option value="DF">Distrito Federal</option>
+                                                <option value="ES">Espírito Santo</option>
+                                                <option value="PE">Pernambuco</option>
+                                                <option value="CE">Ceará</option>
+                                                <option value="PB">Paraíba</option>
+                                                <option value="RN">Rio Grande do Norte</option>
+                                                <option value="AL">Alagoas</option>
+                                                <option value="SE">Sergipe</option>
+                                                <option value="MA">Maranhão</option>
+                                                <option value="PI">Piauí</option>
+                                                <option value="MT">Mato Grosso</option>
+                                                <option value="MS">Mato Grosso do Sul</option>
+                                                <option value="TO">Tocantins</option>
+                                                <option value="PA">Pará</option>
+                                                <option value="AM">Amazonas</option>
+                                                <option value="RO">Rondônia</option>
+                                                <option value="AC">Acre</option>
+                                                <option value="RR">Roraima</option>
+                                                <option value="AP">Amapá</option>
+                                            </select>
+                                            <label for="state" class="required-field">Estado</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Senha -->
+                                <div class="form-floating mb-3">
+                                    <input type="password" name="password" id="password" class="form-control"
+                                        placeholder="Sua senha" required>
+                                    <label for="password" class="required-field">Senha</label>
+                                </div>
+
+                                <div class="form-floating mb-4">
+                                    <input type="password" name="confirmPassword" id="confirmPassword"
+                                        class="form-control" placeholder="Confirme sua senha" required>
+                                    <label for="confirmPassword" class="required-field">Confirmar senha</label>
+                                </div>
+
+                                <!-- Termos de uso -->
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="acceptTerms" required>
+                                    <label class="form-check-label terms-label" for="acceptTerms">
+                                        Eu aceito os <a href="#" class="terms-link">termos de uso</a> e <a href="#"
+                                            class="terms-link">política de privacidade</a>
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn custom-btn w-100 mb-3">
+                                    Criar conta
+                                </button>
+
+                                <div class="text-center">
+                                    <p class="login-text">
+                                        Já tem uma conta?
+                                        <a href="login.html" class="login-link">Entrar</a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/cadastro.js"></script>
+</body>
+
+</html>

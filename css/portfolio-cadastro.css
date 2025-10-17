@@ -1,0 +1,432 @@
+/*---------------------------------------
+  PORTFOLIO CADASTRO STYLES
+-----------------------------------------*/
+
+/* Utiliza as cores do tema principal */
+:root {
+  --portfolio-primary-color: #1a4a3a;
+  --portfolio-secondary-color: #ffd700;
+  --portfolio-bg-color: #f8fdf8;
+  --portfolio-dark-color: #1e3a5f;
+  --portfolio-light-green: #e8f5e8;
+  --portfolio-border-color: #e0f0e0;
+  --portfolio-text-color: #4a5c4a;
+  --portfolio-white: #ffffff;
+  --portfolio-danger: #dc3545;
+  --portfolio-success: #28a745;
+}
+
+/* Layout Principal */
+.portfolio-signup-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--portfolio-bg-color) 0%, var(--portfolio-light-green) 100%);
+  padding: 80px 0 40px;
+}
+
+.portfolio-form-container {
+  background: var(--portfolio-white);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(26, 74, 58, 0.1);
+  border: 2px solid var(--portfolio-border-color);
+}
+
+/* Header */
+.portfolio-form-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.portfolio-title {
+  color: var(--portfolio-primary-color);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.portfolio-subtitle {
+  color: var(--portfolio-text-color);
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+/* Form Sections */
+.form-section {
+  border-bottom: 2px solid var(--portfolio-border-color);
+  padding-bottom: 2rem;
+}
+
+.form-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.section-title {
+  color: var(--portfolio-primary-color);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--portfolio-secondary-color);
+  display: inline-block;
+}
+
+/* Form Controls */
+.form-control,
+.form-select {
+  border: 2px solid var(--portfolio-border-color);
+  border-radius: 12px;
+  padding: 15px 20px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: var(--portfolio-white);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--portfolio-primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(26, 74, 58, 0.25);
+  background-color: var(--portfolio-white);
+}
+
+.form-floating > label {
+  color: var(--portfolio-text-color);
+  font-weight: 500;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-select ~ label {
+  color: var(--portfolio-primary-color);
+  font-weight: 600;
+}
+
+.required-field::after {
+  content: " *";
+  color: var(--portfolio-danger);
+  font-weight: bold;
+}
+
+/* Description Textarea */
+.description-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Image Upload Section */
+.image-upload-section {
+  background: var(--portfolio-light-green);
+  border-radius: 15px;
+  padding: 2rem;
+  border: 2px dashed var(--portfolio-primary-color);
+}
+
+.upload-info {
+  text-align: center;
+  color: var(--portfolio-text-color);
+}
+
+.image-upload-container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.image-upload-btn {
+  display: block;
+  width: 100%;
+  padding: 3rem 2rem;
+  text-align: center;
+  border: 3px dashed var(--portfolio-primary-color);
+  border-radius: 15px;
+  background: var(--portfolio-white);
+  color: var(--portfolio-primary-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.image-upload-btn:hover {
+  background: var(--portfolio-light-green);
+  border-color: var(--portfolio-secondary-color);
+  color: var(--portfolio-dark-color);
+  transform: translateY(-2px);
+}
+
+.image-upload-btn i {
+  color: var(--portfolio-secondary-color);
+  margin-bottom: 1rem;
+}
+
+.image-upload-btn h5 {
+  color: var(--portfolio-primary-color);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.image-upload-btn p {
+  color: var(--portfolio-text-color);
+  margin: 0;
+}
+
+/* Image Preview Grid */
+.image-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.image-preview-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--portfolio-border-color);
+  background: var(--portfolio-white);
+}
+
+.image-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-preview-item:hover img {
+  transform: scale(1.05);
+}
+
+.image-remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: var(--portfolio-danger);
+  color: var(--portfolio-white);
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+}
+
+.image-remove-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.upload-counter {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--portfolio-primary-color);
+}
+
+/* Checkbox Styles */
+.form-check-input {
+  border: 2px solid var(--portfolio-border-color);
+  border-radius: 6px;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.form-check-input:checked {
+  background-color: var(--portfolio-primary-color);
+  border-color: var(--portfolio-primary-color);
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(26, 74, 58, 0.25);
+}
+
+.terms-label {
+  color: var(--portfolio-text-color);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.terms-link {
+  color: var(--portfolio-primary-color);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.terms-link:hover {
+  color: var(--portfolio-secondary-color);
+}
+
+/* Submit Button */
+.portfolio-submit-btn {
+  background: linear-gradient(135deg, var(--portfolio-primary-color) 0%, var(--portfolio-dark-color) 100%);
+  border: none;
+  border-radius: 50px;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--portfolio-white);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(26, 74, 58, 0.3);
+}
+
+.portfolio-submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(26, 74, 58, 0.4);
+  background: linear-gradient(135deg, var(--portfolio-dark-color) 0%, var(--portfolio-primary-color) 100%);
+}
+
+.portfolio-submit-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Form Actions */
+.form-actions {
+  margin-top: 2rem;
+}
+
+.btn-outline-secondary {
+  border: 2px solid var(--portfolio-border-color);
+  color: var(--portfolio-text-color);
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  background: var(--portfolio-light-green);
+  border-color: var(--portfolio-primary-color);
+  color: var(--portfolio-primary-color);
+}
+
+/* Navigation Customization */
+.navbar {
+  background: var(--portfolio-primary-color) !important;
+  padding: 1rem 0;
+  box-shadow: 0 4px 20px rgba(26, 74, 58, 0.2);
+}
+
+.navbar-brand {
+  color: var(--portfolio-secondary-color) !important;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.btn-outline-light {
+  border: 2px solid var(--portfolio-secondary-color);
+  color: var(--portfolio-secondary-color);
+  font-weight: 600;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background: var(--portfolio-secondary-color);
+  color: var(--portfolio-primary-color);
+}
+
+/* Footer Customization */
+.site-footer {
+  background: var(--portfolio-primary-color);
+  color: var(--portfolio-white);
+  padding: 2rem 0;
+  margin-top: 0;
+}
+
+.site-footer a {
+  color: var(--portfolio-secondary-color);
+}
+
+.site-footer a:hover {
+  color: var(--portfolio-white);
+}
+
+/* Form Text */
+.form-text {
+  color: var(--portfolio-text-color);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* Error States */
+.form-control.is-invalid {
+  border-color: var(--portfolio-danger);
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-control.is-valid {
+  border-color: var(--portfolio-success);
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* Loading State */
+.portfolio-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.loading .portfolio-submit-btn::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--portfolio-white);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .portfolio-form-container {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .portfolio-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .image-upload-btn {
+    padding: 2rem 1rem;
+  }
+
+  .image-preview-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .portfolio-signup-section {
+    padding: 60px 0 20px;
+  }
+
+  .portfolio-form-container {
+    padding: 15px;
+  }
+
+  .portfolio-title {
+    font-size: 1.8rem;
+  }
+
+  .portfolio-submit-btn {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}

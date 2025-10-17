@@ -1,0 +1,1103 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Portfólio Virtual - Empresas da região do Ipiranga. Conheça os melhores negócios locais e suas ofertas exclusivas.">
+    <meta name="author" content="Plataforma Vozes do Ipiranga">
+
+    <title>Portfólio Virtual - Vozes do Ipiranga</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="css/magnific-popup.css" rel="stylesheet">
+
+    <link href="css/templatemo-first-portfolio-style.css" rel="stylesheet">
+    
+    <style>
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .portfolio-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(255, 255, 153, 0.95) 0%, rgba(255, 255, 204, 0.95) 100%);
+        }
+
+        .portfolio-card:hover .offer-details {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .offer-title-detail {
+            color: #000000;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .portfolio-category {
+            background: #1a4a3a;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .portfolio-title {
+            color: #000000;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-description {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .portfolio-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .portfolio-location {
+            color: #1a1a1a;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .portfolio-location i {
+            color: #4CAF50;
+        }
+
+        .portfolio-rating {
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .portfolio-rating i {
+            color: #FFD700;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: transparent;
+            border: 2px solid #1a4a3a;
+            color: #4CAF50;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #1a4a3a;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .portfolio-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-number {
+            color: #4CAF50;
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.5rem;
+        }
+
+        /* Estilos para Ofertas */
+        .offer-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF4757 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            animation: pulse 2s infinite;
+            z-index: 10;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .offer-container {
+            position: relative;
+        }
+
+        .offer-details {
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .offer-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .offer-old-price {
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+        }
+
+        .offer-new-price {
+            color: #4CAF50;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .offer-discount {
+            background: #FF4757;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .offer-description {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .offer-validity {
+            color: #1a1a1a;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .offer-validity i {
+            color: #FFD700;
+        }
+
+        .btn-ver-oferta {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn-ver-oferta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Seção de Ofertas em Destaque */
+        .featured-offers {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 71, 87, 0.1) 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 2px solid rgba(255, 71, 87, 0.3);
+        }
+
+        .featured-offer-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #FF4757;
+            transition: all 0.3s ease;
+        }
+
+        .featured-offer-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .featured-offer-title {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-offer-company {
+            color: #4CAF50;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="preloader">
+        <div class="spinner">
+            <span class="spinner-rotate"></span>
+        </div>
+    </section>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <a href="index.html" class="navbar-brand mx-auto mx-lg-0">Vozes do Ipiranga</a>
+
+            <div class="d-flex align-items-center d-lg-none">
+                <i class="navbar-icon bi-geo-alt me-3"></i>
+                <a class="custom-btn btn" href="#contato">
+                    Região do Ipiranga
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-5">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi-house-door me-1"></i>Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="portfolio.html">
+                            <i class="bi-briefcase me-1"></i>Portfólio Virtual
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCadastro" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi-plus-circle me-1"></i>Cadastros
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownCadastro">
+                            <li><a class="dropdown-item" href="cadastro-empresa.html">
+                                <i class="bi-building me-2"></i>Cadastrar Empresa
+                            </a></li>
+                            <li><a class="dropdown-item" href="cadastro-eventos.html">
+                                <i class="bi-calendar-event me-2"></i>Cadastrar Evento
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="portfolio-cadastro.html">
+                                <i class="bi-megaphone me-2"></i>Cadastrar Oferta
+                            </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownGestao" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi-gear me-1"></i>Gestão
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownGestao">
+                            <li><a class="dropdown-item" href="gestao-empresas.html">
+                                <i class="bi-building-gear me-2"></i>Gestão de Empresas
+                            </a></li>
+                            <li><a class="dropdown-item" href="gestao-eventos.html">
+                                <i class="bi-calendar-check me-2"></i>Gestão de Eventos
+                            </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#sobre-nos">
+                            <i class="bi-info-circle me-1"></i>Sobre Nós
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">
+                            <i class="bi-envelope me-1"></i>Contato
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="d-lg-flex align-items-center d-none ms-auto">
+                    <i class="navbar-icon bi-geo-alt me-3"></i>
+                    <a class="custom-btn btn" href="login.html">
+                        <i class="bi-box-arrow-in-right me-2"></i>Login
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero d-flex justify-content-center align-items-center" id="hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-12 mx-auto text-center">
+                        <div class="hero-text">
+                            <div class="hero-title-wrap d-flex justify-content-center align-items-center mb-4">
+                                <img src="images/clients/logo-oficial-vozes.jpg" class="logo-rounded me-3">
+                                <h1 class="hero-title mb-0">Portfólio Virtual</h1>
+                            </div>
+                            <h2 class="mb-4">Conheça as melhores empresas da região do Ipiranga</h2>
+                            <p class="mb-4">Descubra negócios locais, serviços exclusivos e oportunidades únicas em nossa comunidade</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#1a4a3a" fill-opacity="1"
+                    d="M0,160L24,160C48,160,96,160,144,138.7C192,117,240,75,288,64C336,53,384,75,432,106.7C480,139,528,181,576,208C624,235,672,245,720,240C768,235,816,213,864,186.7C912,160,960,128,1008,133.3C1056,139,1104,181,1152,202.7C1200,224,1248,224,1296,197.3C1344,171,1392,117,1416,90.7L1440,64L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z">
+                </path>
+            </svg>
+        </section>
+
+        <!-- ESTATÍSTICAS -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title-wrap d-flex justify-content-center align-items-center mb-5">
+                            <h2 class="text-white mb-0">Números da Nossa Comunidade</h2>
+                        </div>
+                        
+                        <div class="portfolio-stats">
+                            <div class="stat-card">
+                                <span class="stat-number">150+</span>
+                                <p class="stat-label">Empresas Cadastradas</p>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">3</span>
+                                <p class="stat-label">Regiões Atendidas</p>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">5000+</span>
+                                <p class="stat-label">Clientes Conectados</p>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">95%</span>
+                                <p class="stat-label">Satisfação</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OFERTAS EM DESTAQUE -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title-wrap d-flex justify-content-center align-items-center mb-4">
+                            <i class="bi-fire text-danger me-3" style="font-size: 2rem;"></i>
+                            <h2 class="text-white mb-0">Ofertas em Destaque</h2>
+                        </div>
+
+                        <div class="featured-offers">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="featured-offer-card">
+                                        <div class="featured-offer-company">
+                                            <i class="bi-shop me-2"></i>Sabor Local
+                                        </div>
+                                        <h4 class="featured-offer-title">Rodízio de Pizza - 50% OFF</h4>
+                                        <div class="offer-price">
+                                            <span class="offer-old-price">R$ 80,00</span>
+                                            <span class="offer-new-price">R$ 40,00</span>
+                                            <span class="offer-discount">-50%</span>
+                                        </div>
+                                        <div class="offer-validity">
+                                            <i class="bi-clock"></i>
+                                            <span>Válido até 31/12/2024</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="featured-offer-card">
+                                        <div class="featured-offer-company">
+                                            <i class="bi-laptop me-2"></i>Tech Solutions Ipiranga
+                                        </div>
+                                        <h4 class="featured-offer-title">Site Profissional com 30% de desconto</h4>
+                                        <div class="offer-price">
+                                            <span class="offer-old-price">R$ 2.000,00</span>
+                                            <span class="offer-new-price">R$ 1.400,00</span>
+                                            <span class="offer-discount">-30%</span>
+                                        </div>
+                                        <div class="offer-validity">
+                                            <i class="bi-clock"></i>
+                                            <span>Válido até 15/11/2024</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="featured-offer-card">
+                                        <div class="featured-offer-company">
+                                            <i class="bi-heart-pulse me-2"></i>Clínica Bem Estar
+                                        </div>
+                                        <h4 class="featured-offer-title">Check-up Completo com Desconto</h4>
+                                        <div class="offer-price">
+                                            <span class="offer-old-price">R$ 500,00</span>
+                                            <span class="offer-new-price">R$ 350,00</span>
+                                            <span class="offer-discount">-30%</span>
+                                        </div>
+                                        <div class="offer-validity">
+                                            <i class="bi-clock"></i>
+                                            <span>Válido até 20/11/2024</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="featured-offer-card">
+                                        <div class="featured-offer-company">
+                                            <i class="bi-basket me-2"></i>Supermercado Economia
+                                        </div>
+                                        <h4 class="featured-offer-title">20% OFF em compras acima de R$ 100</h4>
+                                        <div class="offer-price">
+                                            <span class="offer-new-price">Até 20% OFF</span>
+                                        </div>
+                                        <div class="offer-validity">
+                                            <i class="bi-clock"></i>
+                                            <span>Válido até 30/10/2024</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFÓLIO -->
+        <section class="section-padding" id="portfolio">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title-wrap d-flex justify-content-center align-items-center mb-4">
+                            <h2 class="text-white mb-0">Empresas Parceiras</h2>
+                        </div>
+
+                        <!-- FILTROS -->
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">Todas</button>
+                            <button class="filter-btn" data-filter="restaurantes">Restaurantes</button>
+                            <button class="filter-btn" data-filter="servicos">Serviços</button>
+                            <button class="filter-btn" data-filter="varejo">Varejo</button>
+                            <button class="filter-btn" data-filter="saude">Saúde</button>
+                            <button class="filter-btn" data-filter="educacao">Educação</button>
+                        </div>
+
+                        <!-- GRID DE PORTFÓLIO -->
+                        <div class="portfolio-grid">
+                            
+                            <!-- EMPRESA 1 -->
+                            <div class="portfolio-card offer-container" data-category="restaurantes">
+                                <span class="offer-badge">
+                                    <i class="bi-fire me-1"></i>OFERTA!
+                                </span>
+                                <img src="images/projects/nikhil-KO4io-eCAXA-unsplash.jpg" alt="Restaurante Sabor Local" class="portfolio-image">
+                                <span class="portfolio-category">Restaurante</span>
+                                <h3 class="portfolio-title">Sabor Local</h3>
+                                <p class="portfolio-description">Culinária brasileira autêntica com ingredientes frescos e receitas tradicionais da região. Ambiente acolhedor para toda a família.</p>
+
+                                <div class="offer-details">
+                                    <h4 class="offer-title-detail">
+                                        <i class="bi-gift me-2"></i>Rodízio de Pizza - 50% OFF
+                                    </h4>
+                                    <div class="offer-price">
+                                        <span class="offer-old-price">R$ 80,00</span>
+                                        <span class="offer-new-price">R$ 40,00</span>
+                                        <span class="offer-discount">-50%</span>
+                                    </div>
+                                    <p class="offer-description">Aproveite nosso rodízio completo com mais de 20 sabores de pizza! Bebidas inclusas.</p>
+                                    <div class="offer-validity">
+                                        <i class="bi-clock"></i>
+                                        <span>Válido até 31/12/2024</span>
+                                    </div>
+                                </div>
+
+                                <div class="portfolio-meta">
+                                    <div class="portfolio-location">
+                                        <i class="bi-geo-alt"></i>
+                                        <span>Heliópolis</span>
+                                    </div>
+                                    <div class="portfolio-rating">
+                                        <span>4.8</span>
+                                        <i class="bi-star-fill"></i>
+                                    </div>
+                                </div>
+                                <button class="btn-ver-oferta" onclick="alert('Entre em contato: (11) 98765-4321')">
+                                    <i class="bi-whatsapp me-2"></i>Aproveitar Oferta
+                                </button>
+                            </div>
+
+                            <!-- EMPRESA 2 -->
+                            <div class="portfolio-card offer-container" data-category="servicos">
+                                <span class="offer-badge">
+                                    <i class="bi-fire me-1"></i>OFERTA!
+                                </span>
+                                <img src="images/pazzne.jpg" alt="Pazzné Branding" class="portfolio-image" style="transform: scale(1.10); transform-origin: center;">
+                                <span class="portfolio-category">Tecnologia</span>
+                                <h3 class="portfolio-title">Pazzné Branding</h3>
+                                <p class="portfolio-description">Serviços de tecnologia para pequenas e médias empresas. Desenvolvimento de sites, sistemas e consultoria em TI.</p>
+
+                                <div class="offer-details">
+                                    <h4 class="offer-title-detail">
+                                        <i class="bi-gift me-2"></i>Site Profissional com 30% OFF
+                                    </h4>
+                                    <div class="offer-price">
+                                        <span class="offer-old-price">R$ 2.000,00</span>
+                                        <span class="offer-new-price">R$ 1.400,00</span>
+                                        <span class="offer-discount">-30%</span>
+                                    </div>
+                                    <p class="offer-description">Site completo com design responsivo, SEO otimizado e hospedagem gratuita por 6 meses!</p>
+                                    <div class="offer-validity">
+                                        <i class="bi-clock"></i>
+                                        <span>Válido até 15/11/2024</span>
+                                    </div>
+                                </div>
+
+                                <div class="portfolio-meta">
+                                    <div class="portfolio-location">
+                                        <i class="bi-geo-alt"></i>
+                                        <span>Av. Cursino</span>
+                                    </div>
+                                    <div class="portfolio-rating">
+                                        <span>4.9</span>
+                                        <i class="bi-star-fill"></i>
+                                    </div>
+                                </div>
+                                <button class="btn-ver-oferta" onclick="alert('Entre em contato: (11) 91234-5678')">
+                                    <i class="bi-whatsapp me-2"></i>Aproveitar Oferta
+                                </button>
+                            </div>
+
+                            <!-- EMPRESA 3 -->
+                            <div class="portfolio-card" data-category="varejo">
+                                <img src="images/white-desk-work-study-aesthetics.jpg" alt="Moda & Estilo" class="portfolio-image">
+                                <span class="portfolio-category">Moda</span>
+                                <h3 class="portfolio-title">Moda & Estilo</h3>
+                                <p class="portfolio-description">Roupas e acessórios para todas as idades. Coleções exclusivas com preços acessíveis e atendimento personalizado.</p>
+                                <div class="portfolio-meta">
+                                    <div class="portfolio-location">
+                                        <i class="bi-geo-alt"></i>
+                                        <span>Sacomã</span>
+                                    </div>
+                                    <div class="portfolio-rating">
+                                        <span>4.7</span>
+                                        <i class="bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- EMPRESA 4 -->
+                            <div class="portfolio-card offer-container" data-category="saude">
+                                <span class="offer-badge">
+                                    <i class="bi-fire me-1"></i>OFERTA!
+                                </span>
+                                <img src="images/handshake-man-woman-after-signing-business-contract-closeup.jpg" alt="Clínica Bem Estar" class="portfolio-image">
+                                <span class="portfolio-category">Saúde</span>
+                                <h3 class="portfolio-title">Clínica Bem Estar</h3>
+                                <p class="portfolio-description">Atendimento médico completo com especialistas em diversas áreas. Equipamentos modernos e equipe qualificada.</p>
+
+                                <div class="offer-details">
+                                    <h4 class="offer-title-detail">
+                                        <i class="bi-gift me-2"></i>Check-up Completo com Desconto
+                                    </h4>
+                                    <div class="offer-price">
+                                        <span class="offer-old-price">R$ 500,00</span>
+                                        <span class="offer-new-price">R$ 350,00</span>
+                                        <span class="offer-discount">-30%</span>
+                                    </div>
+                                    <p class="offer-description">Pacote completo de exames: hemograma, glicemia, colesterol e muito mais!</p>
+                                    <div class="offer-validity">
+                                        <i class="bi-clock"></i>
+                                        <span>Válido até 20/11/2024</span>
+                                    </div>
+                                </div>
+
+                                <div class="portfolio-meta">
+                                    <div class="portfolio-location">
+                                        <i class="bi-geo-alt"></i>
+                                        <span>Heliópolis</span>
+                                    </div>
+                                    <div class="portfolio-rating">
+                                        <span>4.9</span>
+                                        <i class="bi-star-fill"></i>
+                                    </div>
+                                </div>
+                                <button class="btn-ver-oferta" onclick="alert('Entre em contato: (11) 93456-7890')">
+                                    <i class="bi-whatsapp me-2"></i>Aproveitar Oferta
+                                </button>
+                            </div>
+
+                            <!-- EMPRESA 5 -->
+                            <div class="portfolio-card" data-category="educacao">
+                                <img src="images/aerial-view-man-using-computer-laptop-wooden-table.jpg" alt="Escola Futuro" class="portfolio-image">
+                                <span class="portfolio-category">Educação</span>
+                                <h3 class="portfolio-title">Escola Futuro</h3>
+                                <p class="portfolio-description">Ensino de qualidade do fundamental ao médio. Metodologia inovadora e preparo para o vestibular e mercado de trabalho.</p>
+                                <div class="portfolio-meta">
+                                    <div class="portfolio-location">
+                                        <i class="bi-geo-alt"></i>
+                                        <span>Av. Cursino</span>
+                                    </div>
+                                    <div class="portfolio-rating">
+                                        <span>4.8</span>
+                                        <i class="bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- EMPRESA 6 -->
+                            <div class="portfolio-card" data-category="servicos">
+                                <img src="images/happy-bearded-young-man.jpg" alt="AutoMaster" class="portfolio-image">
+                                <span class="portfolio-category">Automotivo</span>
+                                <h3 class="portfolio-title">AutoMaster</h3>
+                                <p class="portfolio-description">Oficina mecânica especializada em todos os tipos de veículos. Serviços de qualidade com garantia e preços justos.</p>
+                                <div class="portfolio-meta">
+                                    <div class="portfolio-location">
+                                        <i class="bi-geo-alt"></i>
+                                        <span>Sacomã</span>
+                                    </div>
+                                    <div class="portfolio-rating">
+                                        <span>4.6</span>
+                                        <i class="bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- EMPRESA 7 -->
+                            <div class="portfolio-card" data-category="restaurantes">
+                                <img src="images/projects/the-5th-IQYR7N67dhM-unsplash.jpg" alt="Pizzaria Nonna" class="portfolio-image">
+                                <span class="portfolio-category">Pizzaria</span>
+                                <h3 class="portfolio-title">Pizzaria Nonna</h3>
+                                <p class="portfolio-description">Pizzas artesanais com massa fermentada naturalmente. Ingredientes selecionados e receitas da tradição italiana.</p>
+                                <div class="portfolio-meta">
+                                    <div class="portfolio-location">
+                                        <i class="bi-geo-alt"></i>
+                                        <span>Heliópolis</span>
+                                    </div>
+                                    <div class="portfolio-rating">
+                                        <span>4.9</span>
+                                        <i class="bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- EMPRESA 8 -->
+                            <div class="portfolio-card offer-container" data-category="varejo">
+                                <span class="offer-badge">
+                                    <i class="bi-fire me-1"></i>OFERTA!
+                                </span>
+                                <img src="images/projects/true-agency-9Bjog5FZ-oc-unsplash.jpg" alt="Supermercado Economia" class="portfolio-image">
+                                <span class="portfolio-category">Supermercado</span>
+                                <h3 class="portfolio-title">Supermercado Economia</h3>
+                                <p class="portfolio-description">Produtos frescos e de qualidade com os melhores preços da região. Atendimento próximo e ofertas especiais.</p>
+
+                                <div class="offer-details">
+                                    <h4 class="offer-title-detail">
+                                        <i class="bi-gift me-2"></i>20% OFF em compras acima de R$ 100
+                                    </h4>
+                                    <div class="offer-price">
+                                        <span class="offer-new-price">Até 20% OFF</span>
+                                    </div>
+                                    <p class="offer-description">Válido para todos os setores: açougue, padaria, hortifrúti e mercearia!</p>
+                                    <div class="offer-validity">
+                                        <i class="bi-clock"></i>
+                                        <span>Válido até 30/10/2024</span>
+                                    </div>
+                                </div>
+
+                                <div class="portfolio-meta">
+                                    <div class="portfolio-location">
+                                        <i class="bi-geo-alt"></i>
+                                        <span>Av. Cursino</span>
+                                    </div>
+                                    <div class="portfolio-rating">
+                                        <span>4.5</span>
+                                        <i class="bi-star-fill"></i>
+                                    </div>
+                                </div>
+                                <button class="btn-ver-oferta" onclick="alert('Entre em contato: (11) 94567-8901')">
+                                    <i class="bi-whatsapp me-2"></i>Aproveitar Oferta
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE CADASTRO -->
+        <section class="section-padding" id="cadastro" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(26, 74, 58, 0.2) 100%);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-12 mx-auto">
+                        <div class="section-title-wrap d-flex justify-content-center align-items-center mb-4">
+                            <h2 class="text-white mb-0">Publique Suas Ofertas</h2>
+                        </div>
+                        <p class="text-white mb-5 text-center">Faça parte do maior portfólio virtual da região do Ipiranga. Divulgue suas ofertas e conecte-se com milhares de clientes potenciais.</p>
+
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4 text-center">
+                                <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 15px; height: 100%;">
+                                    <i class="bi-megaphone" style="font-size: 3rem; color: #4CAF50; margin-bottom: 1rem;"></i>
+                                    <h4 class="text-white mb-3">Divulgue Ofertas</h4>
+                                    <p class="text-white" style="opacity: 0.8;">Publique promoções exclusivas e atraia mais clientes para seu negócio</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 15px; height: 100%;">
+                                    <i class="bi-graph-up-arrow" style="font-size: 3rem; color: #4CAF50; margin-bottom: 1rem;"></i>
+                                    <h4 class="text-white mb-3">Aumente Vendas</h4>
+                                    <p class="text-white" style="opacity: 0.8;">Alcance milhares de clientes ativos na região do Ipiranga</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 15px; height: 100%;">
+                                    <i class="bi-people" style="font-size: 3rem; color: #4CAF50; margin-bottom: 1rem;"></i>
+                                    <h4 class="text-white mb-3">Fortaleça sua Marca</h4>
+                                    <p class="text-white" style="opacity: 0.8;">Destaque sua empresa e construa relacionamento com a comunidade</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="d-flex flex-wrap justify-content-center gap-3">
+                                <a href="#contato" class="custom-btn btn" style="background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); padding: 1rem 2.5rem; font-size: 1.1rem;">
+                                    <i class="bi-plus-circle me-2"></i>Cadastrar Oferta
+                                </a>
+                                <a href="#contato" class="custom-btn btn" style="background: transparent; border: 2px solid white; padding: 1rem 2.5rem; font-size: 1.1rem;">
+                                    <i class="bi-info-circle me-2"></i>Saiba Mais
+                                </a>
+                            </div>
+                            <p class="text-white mt-4" style="opacity: 0.7;">
+                                <i class="bi-check-circle me-2"></i>Planos a partir de R$ 99/mês |
+                                <i class="bi-check-circle me-2 ms-3"></i>Primeira oferta grátis |
+                                <i class="bi-check-circle me-2 ms-3"></i>Sem fidelidade
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTATO -->
+        <section class="contact section-padding" id="contato">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 col-12">
+                        <div class="section-title-wrap d-flex justify-content-center align-items-center mb-5">
+                            <img src="images/aerial-view-man-using-computer-laptop-wooden-table.jpg" class="avatar-image img-fluid" alt="">
+                            <h2 class="text-white ms-4 mb-0">Fale Conosco</h2>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-lg-3 col-md-6 col-12 pe-lg-0">
+                        <div class="contact-info contact-info-border-start d-flex flex-column">
+                            <strong class="site-footer-title d-block mb-3">Serviços</strong>
+                            <ul class="footer-menu">
+                                <li class="footer-menu-item"><a href="#" class="footer-menu-link">Cadastro de Empresas</a></li>
+                                <li class="footer-menu-item"><a href="#" class="footer-menu-link">Marketing Digital</a></li>
+                                <li class="footer-menu-item"><a href="#" class="footer-menu-link">Networking</a></li>
+                                <li class="footer-menu-item"><a href="#" class="footer-menu-link">Consultoria</a></li>
+                            </ul>
+
+                            <strong class="site-footer-title d-block mt-4 mb-3">Redes Sociais</strong>
+                            <ul class="social-icon">
+                                <li class="social-icon-item"><a href="#" class="social-icon-link bi-instagram"></a></li>
+                                <li class="social-icon-item"><a href="#" class="social-icon-link bi-facebook"></a></li>
+                                <li class="social-icon-item"><a href="#" class="social-icon-link bi-linkedin"></a></li>
+                                <li class="social-icon-item"><a href="#" class="social-icon-link bi-whatsapp"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12 ps-lg-0">
+                        <div class="contact-info d-flex flex-column">
+                            <strong class="site-footer-title d-block mb-3">Contato</strong>
+                            <p class="mb-2">Entre em contato para cadastrar sua empresa no nosso portfólio virtual.</p>
+
+                            <strong class="site-footer-title d-block mt-4 mb-3">Email</strong>
+                            <p><a href="mailto:portfolio@vozesdoipiranga.com.br">portfolio@vozesdoipiranga.com.br</a></p>
+
+                            <strong class="site-footer-title d-block mt-4 mb-3">Telefone</strong>
+                            <p class="mb-0"><a href="tel:11999999999">(11) 99999-9999</a></p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+                        <form action="#" method="post" class="custom-form contact-form" role="form">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="form-floating">
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="Nome da Empresa" required>
+                                        <label for="name">Nome da Empresa</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="form-floating">
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="form-floating">
+                                        <input type="tel" name="phone" id="phone" class="form-control" placeholder="Telefone" required>
+                                        <label for="phone">Telefone</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="form-floating">
+                                        <select name="region" id="region" class="form-control" required>
+                                            <option value="">Selecione a Região</option>
+                                            <option value="heliopolis">Heliópolis</option>
+                                            <option value="cursino">Av. Cursino / Alto do Ipiranga</option>
+                                            <option value="sacoma">Sacomã</option>
+                                        </select>
+                                        <label for="region">Região</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="message" name="message" placeholder="Descreva sua empresa"></textarea>
+                                        <label for="message">Descreva sua empresa e serviços</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-12 ms-auto">
+                                    <button type="submit" class="form-control">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="copyright-text-wrap">
+                        <p class="mb-0">
+                            <span class="copyright-text">Copyright © 2024 <a href="#">Vozes do Ipiranga</a>. Todos os direitos reservados.</span>
+                            Design: <a rel="sponsored" href="https://www.pazzne.com" target="_blank">Pazzné Branding</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/magnific-popup-options.js"></script>
+    <script src="js/custom.js"></script>
+
+    <script>
+        // Filtro do Portfólio
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    // Filter portfolio items
+                    portfolioCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 100);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            // Contador de ofertas ativas
+            const offerCards = document.querySelectorAll('.offer-container');
+            console.log(`Total de ofertas ativas: ${offerCards.length}`);
+
+            // Animação de entrada dos cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            portfolioCards.forEach(card => {
+                observer.observe(card);
+            });
+
+            // Adicionar filtro apenas para ofertas
+            const showOnlyOffersBtn = document.createElement('button');
+            showOnlyOffersBtn.className = 'filter-btn';
+            showOnlyOffersBtn.setAttribute('data-filter', 'ofertas');
+            showOnlyOffersBtn.innerHTML = '<i class="bi-fire me-2"></i>Apenas com Ofertas';
+
+            const filterContainer = document.querySelector('.filter-buttons');
+            if (filterContainer) {
+                filterContainer.appendChild(showOnlyOffersBtn);
+
+                showOnlyOffersBtn.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    portfolioCards.forEach(card => {
+                        if (card.classList.contains('offer-container')) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 100);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            }
+        });
+
+        // Animação CSS para entrada dos cards
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+</body>
+
+</html>

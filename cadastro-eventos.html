@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Cadastro de Eventos - Vozes do Ipiranga">
+    <meta name="author" content="Vozes do Ipiranga">
+    <title>Cadastro de Eventos - Vozes do Ipiranga</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/templatemo-first-portfolio-style.css" rel="stylesheet">
+    <link href="css/cadastro.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <section class="signup-section">
+            <div class="container-fluid">
+                <div class="row min-vh-100">
+                    <!-- Left side - Brand/Logo -->
+                    <div class="col-lg-5 d-flex align-items-center justify-content-center signup-brand-side">
+                        <div class="text-center">
+                            <h2 class="brand-title">Vozes do Ipiranga</h2>
+                            <p class="brand-subtitle">Divulgue seu evento e alcance toda a comunidade local</p>
+                            <div class="brand-features mt-4">
+                                <div class="feature-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Ampla divulgação na região</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Alcance milhares de pessoas</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Gestão simples e eficiente</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right side - Event Form -->
+                    <div class="col-lg-7 d-flex align-items-center justify-content-center signup-form-side">
+                        <div class="signup-form-container">
+                            <div class="signup-form-header mb-4">
+                                <h3 class="signup-title">Cadastrar Novo Evento</h3>
+                                <p class="signup-subtitle">Preencha os dados abaixo para cadastrar seu evento</p>
+                            </div>
+
+                            <form class="custom-form signup-form" role="form" action="#" method="post" enctype="multipart/form-data">
+                                <!-- Tipo de Evento -->
+                                <div class="mb-4">
+                                    <label class="form-label required-field">Tipo de evento</label>
+                                    <div class="person-type-toggle">
+                                        <input type="radio" class="btn-check" name="eventType" id="gratuito" value="gratuito" checked>
+                                        <label class="btn btn-outline-primary person-type-btn" for="gratuito">
+                                            <i class="bi bi-gift"></i> Gratuito
+                                        </label>
+
+                                        <input type="radio" class="btn-check" name="eventType" id="pago" value="pago">
+                                        <label class="btn btn-outline-primary person-type-btn" for="pago">
+                                            <i class="bi bi-ticket-perforated"></i> Pago
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Nome do Evento -->
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="eventName" id="eventName" class="form-control"
+                                        placeholder="Nome do evento" required>
+                                    <label for="eventName" class="required-field">Nome do evento</label>
+                                </div>
+
+                                <!-- Categoria -->
+                                <div class="form-floating mb-3">
+                                    <select name="category" id="category" class="form-select" required>
+                                        <option value="">Selecione...</option>
+                                        <option value="cultural">Cultural</option>
+                                        <option value="educacional">Educacional</option>
+                                        <option value="esportivo">Esportivo</option>
+                                        <option value="festa">Festa</option>
+                                        <option value="gastronômico">Gastronômico</option>
+                                        <option value="workshop">Workshop</option>
+                                        <option value="palestra">Palestra</option>
+                                        <option value="curso">Curso</option>
+                                        <option value="networking">Networking</option>
+                                        <option value="beneficente">Beneficente</option>
+                                        <option value="religioso">Religioso</option>
+                                        <option value="outro">Outro</option>
+                                    </select>
+                                    <label for="category" class="required-field">Categoria</label>
+                                </div>
+
+                                <!-- Descrição -->
+                                <div class="form-floating mb-3">
+                                    <textarea name="description" id="description" class="form-control"
+                                        placeholder="Descrição do evento" style="height: 120px" required></textarea>
+                                    <label for="description" class="required-field">Descrição do evento</label>
+                                </div>
+
+                                <!-- Data e Hora -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="date" name="eventDate" id="eventDate" class="form-control" required>
+                                            <label for="eventDate" class="required-field">Data do evento</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="time" name="eventTime" id="eventTime" class="form-control" required>
+                                            <label for="eventTime" class="required-field">Horário de início</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Duração -->
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="duration" id="duration" class="form-control"
+                                        placeholder="Ex: 2 horas, 3 dias, etc.">
+                                    <label for="duration">Duração estimada</label>
+                                </div>
+
+                                <!-- Local do Evento -->
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="venue" id="venue" class="form-control"
+                                        placeholder="Nome do local" required>
+                                    <label for="venue" class="required-field">Local do evento</label>
+                                </div>
+
+                                <!-- Endereço do Evento -->
+                                <div class="row mb-3">
+                                    <div class="col-md-8">
+                                        <div class="form-floating">
+                                            <input type="text" name="eventAddress" id="eventAddress" class="form-control"
+                                                placeholder="Rua, Avenida..." required>
+                                            <label for="eventAddress" class="required-field">Endereço</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-floating">
+                                            <input type="text" name="eventNumber" id="eventNumber" class="form-control"
+                                                placeholder="123" required>
+                                            <label for="eventNumber" class="required-field">Número</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" name="eventNeighborhood" id="eventNeighborhood"
+                                                class="form-control" placeholder="Bairro" required>
+                                            <label for="eventNeighborhood" class="required-field">Bairro</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" name="eventCity" id="eventCity" class="form-control"
+                                                placeholder="Cidade" value="São Paulo" required>
+                                            <label for="eventCity" class="required-field">Cidade</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Capacidade -->
+                                <div class="form-floating mb-3">
+                                    <input type="number" name="capacity" id="capacity" class="form-control"
+                                        placeholder="Número de vagas" min="1">
+                                    <label for="capacity">Capacidade (número de vagas)</label>
+                                </div>
+
+                                <!-- Valor do Ingresso (apenas para eventos pagos) -->
+                                <div class="form-floating mb-3" id="ticketPriceField" style="display: none;">
+                                    <input type="text" name="ticketPrice" id="ticketPrice" class="form-control"
+                                        placeholder="R$ 0,00">
+                                    <label for="ticketPrice">Valor do ingresso</label>
+                                </div>
+
+                                <!-- Link para inscrição/compra -->
+                                <div class="form-floating mb-3">
+                                    <input type="url" name="registrationLink" id="registrationLink" class="form-control"
+                                        placeholder="https://...">
+                                    <label for="registrationLink">Link para inscrição/compra</label>
+                                </div>
+
+                                <!-- Organizador -->
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="organizer" id="organizer" class="form-control"
+                                        placeholder="Nome do organizador" required>
+                                    <label for="organizer" class="required-field">Organizador</label>
+                                </div>
+
+                                <!-- Contato -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" name="organizerEmail" id="organizerEmail" class="form-control"
+                                                placeholder="contato@email.com" required>
+                                            <label for="organizerEmail" class="required-field">E-mail de contato</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="tel" name="organizerPhone" id="organizerPhone" class="form-control"
+                                                placeholder="(11) 99999-9999" required>
+                                            <label for="organizerPhone" class="required-field">Telefone de contato</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Imagem do Evento -->
+                                <div class="mb-3">
+                                    <label for="eventImage" class="form-label">Imagem do evento</label>
+                                    <input type="file" name="eventImage" id="eventImage" class="form-control"
+                                        accept="image/png, image/jpeg, image/jpg">
+                                    <small class="text-muted">Formatos aceitos: JPG, JPEG, PNG. Tamanho máximo: 5MB</small>
+                                </div>
+
+                                <!-- Informações Adicionais -->
+                                <div class="form-floating mb-4">
+                                    <textarea name="additionalInfo" id="additionalInfo" class="form-control"
+                                        placeholder="Informações adicionais" style="height: 100px"></textarea>
+                                    <label for="additionalInfo">Informações adicionais</label>
+                                </div>
+
+                                <!-- Aceite de termos -->
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="acceptEventTerms" required>
+                                    <label class="form-check-label terms-label" for="acceptEventTerms">
+                                        Confirmo que as informações fornecidas são verdadeiras e autorizo a divulgação do evento na plataforma Vozes do Ipiranga
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn custom-btn w-100 mb-3">
+                                    Cadastrar Evento
+                                </button>
+
+                                <div class="text-center">
+                                    <p class="login-text">
+                                        Quer gerenciar seus eventos?
+                                        <a href="login.html" class="login-link">Entrar</a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/cadastro-eventos.js"></script>
+</body>
+
+</html>
